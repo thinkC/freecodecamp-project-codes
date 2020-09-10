@@ -1,0 +1,40 @@
+:root{
+    --mainRickBlack: #001021;
+    --mainDark: #242325;
+    --mainWhite: #fff;
+    --mainWarmBlack: #034748;
+    --mainBlue:#1481BA;
+    --mainCyan:#11B5E4;
+}
+body{
+    /* background-color: var(--mainCyan); */
+    background: url('https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.navbar{
+    background: var(--mainDark)!important;
+    height: 3.5rem;
+}
+.top-title{
+    margin-top: 6rem;
+}
+.form-wrapper{
+    position: relative;
+}
+.form-container{
+    background: var(--mainDark);
+    height: 63rem;
+    width: 65%;
+    position: absolute;
+    right: 15%;
+    opacity: 0.9;
+}
+.btn{
+    /* min-width: 30.5rem; */
+    background: var(--mainCyan);
+}
+
+

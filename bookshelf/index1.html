@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <title>Bookshelf</title>
+</head>
+
+<body>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+    <!-- 
+
+Hello Camper!
+
+For now, the test suite only works in Chrome! Please read the README below in the JS Editor before beginning. Feel free to delete this message once you have read it. Good luck and Happy Coding! 
+
+- The freeCodeCamp Team 
+
+-->
+
+    <!--header-->
+    <header id="header">
+        <!--navbar-->
+        <nav id="nav-bar" class="navbar navbar-expand-lg navbar-dark px-5 fixed-top">
+            <a href="#home" id="home" class="navbar-brand">
+                <img id="header-img" src="img/logo.png" alt="company logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapase navbar-collapse" id="myNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#video" class="nav-link text-capitalize">how to buy online</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#price" class="nav-link">Pricing</a>
+                    </li>
+                </ul>
+                <div class="d-none d-lg-flex align-items-baseline">
+                    <p class="text-white mx-4">
+                        <span class="mx-2 phone-icon">
+                            <i class="fas fa-phone fa-fw"></i>
+
+                        </span>
+                        +234 808-7876-208
+                    </p>
+                    <button class="btn skyBlue__btn text-capitalize">buy now</button>
+                </div>
+            </div>
+        </nav>
+        <!--end of navbar-->
+
+        <div class="container-fluid">
+            <div class="row">
+                <!--banner image section-->
+                <div class="col-lg-7 banner-img">
+                    <div class="banner-img__top px-3">
+                        <h3 class="text-capitalize">find a book you need</h3>
+                        <p class="text-capitalize">a wide ride of books</p>
+                        <button class="btn btn skyBlue__btn text-capitalize"> shop now</button>
+                    </div>
+
+                </div>
+                <!--end of banner image-->
+                <!--info section-->
+                <div
+                    class="col-lg-5 banner-info-text text-capitalize d-flex flex-column justify-content-between py-5 px-5">
+                    <!--first row-->
+                    <div class="row">
+                        <!--nested column-->
+                        <div class="col-10 mx-auto my-3 my-lg-0 img-nested-height">
+                            <h3 class="text-skyBlue text-slant text-capitalize">bookshelf</h3>
+                            <h1 class="text-capitalize">great books at lowest price!</h1>
+                            <h2 class=" text-capitalize">get an extra <small class="discount">20%
+                                    off</small>
+                            </h2>
+                            <button class="btn btn skyBlue__btn text-capitalize mb-3">see details</button>
+                            <!--form-->
+                            <form id="form" action="http://www.freecodecamp.com/email-submit" method="POST">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" id="email"
+                                        aria-describedby="emailHelp" placeholder="Enter email to subcribe">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                        anyone else.</small>
+                                </div>
+                                <input type="submit" class="btn btn skyBlue__btn text-capitalize" id="submit">Submit
+                                </input>
+                            </form>
+
+                            <!--end of form-->
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--end of info section-->
+            </div>
+        </div>
+    </header>
+    <!--end of header-->
+
+    <!--about us-->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 col-md-6 mx-auto my-3">
+                    <img width="550" height="300"
+                        src="https://images.unsplash.com/photo-1465433045946-ba6506ce5a59?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"
+                        alt="">
+                </div>
+                <div class="col-10 col-md-6 mx-auto my-3">
+                    <div class="row">
+                        <div class="col text-center mb-3">
+                            <h1 class="text-capitalize">about us</h1>
+                            <p>Lorem ipsum dolor sit amet.</p>
+
+                        </div>
+                    </div>
+                    <h3 class="text-uppercase">buy books today</h3>
+                    <blockquote class="blockquote text-right text-skyBlue mb-3">
+                        <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, suscipit?</p>
+                        <footer class="blockquote-footer text-skyBlue text-capitalize">
+                            gbemi ajayi
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end of about us-->
+
+    <!--how to buy online-->
+    <section class="video py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 mx-auto embed-responsive embed-responsive-21by9 ">
+                    <iframe id="video" class="embed-responsive-item" scrolling="no" width="620" height="345"
+                        src="https://www.youtube.com/embed/-wsj_TY9tsw" allow="autoplay; encrypted-media" autoplay="1"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end of how to buy online-->
+    <!--price-->
+    <section id="price" class="price py-5">
+        <div class="container">
+            <div class="row">
+                <!--price card-->
+                <div class="col-10 col-md-6 col-lg-4 mx-auto">
+                    <div class="card">
+                        <div class="card-top">
+                            <h2 class="text-capitalize my-3 p-3 text-center">christian lierature</h2>
+                        </div>
+                        <div class="card-info card-title text-capitalize">
+                            <h5 class="m-3 text-center">$34.99</h5>
+                            <p class="p-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, optio!</p>
+                            <button class="btn skyBlue__btn text-capitalize">buy now</button>
+                        </div>
+                    </div>
+                </div>
+                <!--end of price card-->
+                <!--price card-->
+                <div class="col-10 col-md-6 col-lg-4 mx-auto">
+                    <div class="card">
+                        <div class="card-top">
+                            <h2 class="text-capitalize my-3 p-3 text-center">business books</h2>
+                        </div>
+                        <div class="card-info card-title text-capitalize">
+                            <h5 class="m-3 text-center">$49.99</h5>
+                            <p class="p-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, optio!</p>
+                            <button class="btn skyBlue__btn text-capitalize">buy now</button>
+                        </div>
+                    </div>
+                </div>
+                <!--end of price card-->
+                <!--price card-->
+                <div class="col-10 col-md-6 col-lg-4 mx-auto">
+                    <div class="card">
+                        <div class="card-top">
+                            <h2 class="text-capitalize my-3 p-3 text-center">science fictons</h2>
+                        </div>
+                        <div class="card-info card-title text-capitalize">
+                            <h5 class="m-3 text-center">$20.99</h5>
+                            <p class="p-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, optio!</p>
+                            <button class="btn skyBlue__btn text-capitalize">buy now</button>
+                        </div>
+                    </div>
+                </div>
+                <!--end of price card-->
+            </div>
+        </div>
+    </section>
+    <!--end of price-->
+
+    <!--photo-gallery-->
+    <section id="photo" class="photo">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-capitalize">books gallaery</h2>
+                <div class="books-gallery m-5">
+                    <img height="150" width="250"
+                        src="https://images.unsplash.com/photo-1531988042231-d39a9cc12a9a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"
+                        alt="book">
+                    <img height="150" width="250"
+                        src="https://images.unsplash.com/photo-1463320726281-696a485928c7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"
+                        alt="book">
+                    <img height="150" width="250"
+                        src="https://images.unsplash.com/photo-1481047540402-8f3d39289bca?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"
+                        alt="book">
+                    <img height="150" width="250"
+                        src="https://images.unsplash.com/photo-1473218786326-03234fe85b96?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"
+                        alt="book">
+                    <img height="150" width="250"
+                        src="https://images.unsplash.com/photo-1473218786326-03234fe85b96?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"
+                        alt="book">
+                    <img height="150" width="250"
+                        src="https://images.unsplash.com/photo-1473218786326-03234fe85b96?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9"
+                        alt="book">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end of photo-gallery-->
+
+    <!--footer-->
+    <footer id="footer" class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <!--footer logo-->
+                <div class="col-md-4 px-3 text-center my-3">
+                    <div class="logo-container">
+                        <span class="logo-color">
+                            <i class="fas fa-book fa-2x"></i>
+                            <p class="text-uppercase p-3">bookshelf</p>
+                        </span>
+                    </div>
+                </div>
+                <!--end of footer logo-->
+
+                <div class="col-md-8 col lg-6 col-xl-5 mx-auto px-3 text-center my-3">
+                    <!--section title-->
+                    <div class="row">
+                        <div class="col text-center mb-3">
+                            <h1 class="text-uppercase text-white">contact us</h1>
+                        </div>
+                    </div>
+                    <!--end of section title-->
+                    <!--single contact-->
+                    <div class="single-contact px-5 my-3 d-flex">
+                        <span class="mr-3 text-skyBlue">
+                            <i class="fas fa-map"></i>
+                        </span>
+                        <p class="text-white text-capitalize">123, church, street</p>
+                    </div>
+                    <!--end of single contact-->
+                    <!--single contact-->
+                    <div class="single-contact px-5 my-3 d-flex">
+                        <span class="mr-3 text-skyBlue">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                        <p class="text-white text-capitalize">555-555-555</p>
+                    </div>
+                    <!--end of single contact-->
+                    <!--single contact-->
+                    <div class="single-contact px-5 my-3 d-flex">
+                        <span class="mr-3 text-skyBlue">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <p class="text-white">enovativeng@bookshelf.com</p>
+                    </div>
+                    <!--end of single contact-->
+                </div>
+            </div>
+            <div class="navbar navbar-inverse navbar-fixed-bottom col-10 mx-auto">
+                <div class="container">
+                    <p class="navbar-text text-white text-center">© thinkc</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- end of footer-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--font awesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+    <!-- bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"
+        integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-migrate-3.3.1.min.js"
+        integrity="sha256-APllMc0V4lf/Rb5Cz4idWUCYlBDG3b0EcN1Ushd3hpE=" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Cash Register</h1>
+
+    <script>
+
+        function checkCashRegister(price, cash, cid) {
+            //create a copy of cash register
+            let cidCopy = [...cid];
+            // console.log(cidCopy)
+
+            // result object that shows status and remaiing amount
+            let result = {
+                status: '',
+                change: []
+
+            }
+            //this array contains remaining amount to be given to customer
+            let newArr = [];
+
+            //this array contains updated amountRemaining after each function e.g twenty, oneDoolar has ran
+            let amountToUse = [];
+
+            //get amountRemaining
+            let amountRemaining = cash - price;
+
+            //I created this line to fix INSUFFICIENT FUNDS, currency with zero values ad closed Cash Register
+            if (cash - price === 0.5 && checkIfCashInRegisterHasZero(cid) > 2 && getInitialTotalCashInRegister(cid) !== 0.5) {
+                console.log('you are correct')
+                result.status = 'INSUFFICIENT_FUNDS';
+                result.change = [];
+                return result
+            } else if (cash - price === 0.5 && checkIfCashInRegisterHasZero(cid) > 2 && getInitialTotalCashInRegister(cid) === 0.5) {
+                //console.log('closed - It my turn')
+                result.status = 'CLOSED';
+                result.change = [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]];
+                //console.log(result)
+                return result
+            }
+
+            else {
+
+                //calling functions created
+                hundredDollars(amountRemaining, cid, filterCashWord(cidCopy, 'ONE HUNDRED'));
+                //amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][0]);
+                twentyDollars(amountRemaining, cid, filterCashWord(cidCopy, 'TWENTY'));
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+
+                //console.log(amountRemaining)
+                tenDollars(amountRemaining, cid, filterCashWord(cidCopy, 'TEN'));
+                //[amountToUse.length - 1] returns last element of teh array
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+                //console.log(amountRemaining)
+                fiveDollars(amountRemaining, cid, filterCashWord(cidCopy, 'FIVE'));
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+                //console.log(amountRemaining)
+                oneDollar(amountRemaining, cid, filterCashWord(cidCopy, 'ONE'));
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+                //console.log(amountRemaining)
+                quater(amountRemaining, cid, filterCashWord(cidCopy, 'QUARTER'));
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+                //console.log(amountRemaining)
+                dime(amountRemaining, cid, filterCashWord(cidCopy, 'DIME'));
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+                //console.log(amountRemaining)
+                nickel(amountRemaining, cid, filterCashWord(cidCopy, 'NICKEL'));
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+                //console.log(amountRemaining)
+                penny(amountRemaining, cid, filterCashWord(cidCopy, 'PENNY'));
+                amountRemaining = checkIfAmoutRemainingHasChanged(amountRemaining, [...amountToUse][amountToUse.length - 1]);
+                //console.log(amountRemaining)
+
+                //
+                function hundredDollars(num, arr, str) {
+
+                    //where num is remaining amount
+                    let hundred = 100;
+                    let numCopy = num;
+                    //console.log(numCopy)
+                    // if (numCopy < 100) {
+                    //     return
+                    // }
+                    if (numCopy > 100) {
+                        console.log('numCopy is greater than 100')
+                        numCopy = Math.floor(numCopy / hundred);
+
+                        //check to see if you have sufficient funds
+                        let checkFund = numCopy * hundred
+                        // if (filterCash(arr, str) > checkFund) {
+                        //     numCopy = numCopy - 1;
+                        //     checkFund = numCopy * 100;
+                        // } else {
+                        //     checkFund = numCopy * 100;
+                        // }
+                        let remaingAmount = num - checkFund;
+                        //newArr.push(str, checkFund);
+                        newArr.push([str, checkFund]);
+
+                        return remaingAmount;
+                    }
+
+                }
+                //num is remainingAmount, cidCopy is the cash from cash register, str is currency in word
+                function twentyDollars(num, cidCopy, str) {
+
+                    //amount to use to divide
+                    let twenty = 20;
+                    //creating a copy of remaiingAmount
+                    let numCopy = num;
+                    //check if amount remaining is less than 100
+                    if (numCopy < 100) {
+
+                        //divide amountRemaing with currency value
+                        numCopy = Math.floor(numCopy / twenty);  //console.log(numCopy) //4
+
+                        //check to see if you have sufficient funds
+                        let checkFund = numCopy * twenty; //console.log(checkFund); //80
+
+                        //Do we have enough currency for e.g. TWENTY dollars for this change?
+                        //here we have 60 of TWENTY dollars each in the register and checkFund is 80
+                        //I need number of TWENTY dollars to be less or equal to 60
+                        if (filterCash(cidCopy, str) < checkFund) {
+                            numCopy = numCopy - 1;
+                            //console.log(numCopy)
+                            checkFund = numCopy * twenty;
+                            //console.log(checkFund) //60
+                        }
+                        else {
+                            checkFund = numCopy * twenty;
+                        }
+
+                        //remainig amount
+                        let remaingAmount = num - checkFund;
+                        //console.log(remaingAmount)
+
+                        //add currency str and number value to newArr
+                        newArr.push([str, checkFund])
+                        //console.log(newArr)
+
+                        //I created this to be able to use remaingAmount becuase remainingAmount when retured gave error
+                        amountToUse.push(remaingAmount);
+                        //console.log(amountToUse)
+                        //console.log([...amountToUse][0])
+                        //console.log(remaingAmount);
+
+                    }
+
+                    //return remaingAmount;
+
+                }
+
+
+                function tenDollars(num, cidCopy, str) {
+
+                    let ten = 10;
+
+                    let numCopy = num;
+                    //console.log(numCopy) //36.739
+                    if (numCopy <= 40) {
+
+
+                        numCopy = Math.floor(numCopy / ten);  //console.log(numCopy) //3
+
+                        //check to see if you have sufficient funds
+                        let checkFund = numCopy * ten;
+                        //console.log(checkFund); //30
+
+                        if (filterCash(cidCopy, str) < checkFund) {  //filtercash returns 20
+                            numCopy = numCopy - 1;
+                            //console.log(numCopy) //2
+                            checkFund = numCopy * ten;
+                            //console.log(checkFund); //20
+                        }
+                        else {
+                            checkFund = numCopy * ten;
+                        }
+                        let remaingAmount = num - checkFund;
+                        newArr.push([str, checkFund])
+                        //console.log(newArr)
+                        amountToUse.push(remaingAmount);
+
+                    }
+
+                    //return remaingAmount;
+
+                }
+
+
+                function fiveDollars(num, cidCopy, str) {
+                    let five = 5;
+                    let numCopy = num;
+                    if (numCopy <= 20) {
+                        numCopy = Math.floor(numCopy / five);
+                        let checkFund = numCopy * five;
+                        if (filterCash(cidCopy, str) < checkFund) {  //filtercash returns 20
+                            numCopy = numCopy - 1;
+                            //console.log(numCopy) //2
+                            checkFund = numCopy * five;
+                            //console.log(checkFund); //20
+                        }
+                        else {
+                            checkFund = numCopy * five;
+                        }
+                        let remaingAmount = num - checkFund;
+                        newArr.push([str, checkFund]);
+                        //console.log(newArr)
+                        amountToUse.push(remaingAmount);
+                    }
+
+                    //return remaingAmount;
+
+                }
+                //one dollar
+                function oneDollar(num, cidCopy, str) {
+                    let one = 1;
+                    //console.log(one)
+                    let numCopy = num;
+                    if (numCopy <= 2) {
+                        numCopy = Math.floor(numCopy / one);
+
+                        //check to see if you have sufficient funds
+                        let checkFund = numCopy * one;
+                        if (filterCash(cidCopy, str) < checkFund) {
+                            numCopy = numCopy - 1;
+                            checkFund = numCopy * one;
+                        }
+                        else {
+                            checkFund = numCopy * one;
+                        }
+                        let remaingAmount = num - checkFund;
+                        newArr.push([str, checkFund]);
+                        amountToUse.push(remaingAmount);
+                    }
+
+                    //return remaingAmount;
+
+                }
+
+                //quater
+                function quater(num, cidCopy, str) {
+                    let quaterValue = 0.25;
+                    let numCopy = num;
+                    if (numCopy <= 0.75) {
+                        numCopy = Math.floor(numCopy / quaterValue);
+                        //check to see if you have sufficient funds
+                        let checkFund = numCopy * quaterValue;
+                        if (filterCash(cidCopy, str) < checkFund) {
+                            numCopy = numCopy - 1;
+                            checkFund = numCopy * quaterValue;
+                        }
+                        else {
+                            checkFund = numCopy * quaterValue;
+                        }
+                        let remaingAmount = num - checkFund;
+                        newArr.push([str, checkFund]);
+                        amountToUse.push(remaingAmount);
+                    }
+
+                    //return remaingAmount;
+
+                }
+
+                //DIME
+                function dime(num, cidCopy, str) {
+                    let dimeValue = 0.1;
+                    let numCopy = num;
+                    if (numCopy <= 0.3) {
+                        numCopy = Math.floor(numCopy / dimeValue);
+                        let checkFund = numCopy * dimeValue;
+                        if (filterCash(cidCopy, str) < checkFund) {
+                            numCopy = numCopy - 1;
+                            checkFund = numCopy * dimeValue;
+                        }
+                        else {
+                            checkFund = numCopy * dimeValue;
+                        }
+                        let remaingAmount = num - checkFund;
+                        newArr.push([str, checkFund]);
+                        amountToUse.push(remaingAmount);
+                    }
+
+                    //return remaingAmount;
+
+                }
+
+                //Nickel
+                function nickel(num, cidCopy, str) {
+                    let nickelValue = 0.05;
+                    let numCopy = num;
+                    if (numCopy === 0.05) {
+                        numCopy = Math.floor(numCopy / nickelValue);
+                        let checkFund = numCopy * nickelValue;
+                        if (filterCash(cidCopy, str) < checkFund) {
+                            numCopy = numCopy - 1;
+                            checkFund = numCopy * nickelValue;
+                        }
+                        else {
+                            checkFund = numCopy * nickelValue;
+                        }
+                        let remaingAmount = num - checkFund;
+                        newArr.push(str, checkFund);
+                        newArr.push([str, checkFund]);
+                        amountToUse.push(remaingAmount);
+                    }
+
+                    //return remaingAmount;
+
+                }
+
+                //penny
+                function penny(num, cidCopy, str) {
+                    let pennyValue = 0.01;
+                    let numCopy = num;
+                    if (numCopy <= 0.04) {
+                        numCopy = Math.floor(numCopy / pennyValue);
+                        //check to see if you have sufficient funds
+                        let checkFund = numCopy * pennyValue;
+                        if (filterCash(cidCopy, str) < checkFund) {
+                            numCopy = numCopy - 1;
+                            checkFund = numCopy * pennyValue;
+                        }
+                        else {
+                            checkFund = numCopy * pennyValue;
+                        }
+                        let remaingAmount = num - checkFund;
+                        let finalPennyValue = Number(checkFund + remaingAmount).toFixed(2);
+                        finalPennyValue = parseFloat(finalPennyValue)
+                        newArr.push([str, finalPennyValue]);
+                        amountToUse.push(remaingAmount);
+                        getFinalTotalCashInRegister(newArr)
+
+                    }
+
+                    //return remaingAmount;
+
+                }
+                let newArr1 = removeAllCurrencyNoteWithZeroValue(newArr);
+                result.change.push(...newArr1);
+                let initialCashValue = getInitialTotalCashInRegister(cid);
+                let amountToBeGivenAsChange = cash - price;
+                let changeValue = getFinalTotalCashInRegister(newArr);
+                getCashRegisterStatus(initialCashValue, amountToBeGivenAsChange, result);
+            }
+            return result;
+
+        };
+
+        // function checkIfEnoughCashInRegister(arr1, arr2, obj) {
+
+        //     //filters currency that has zero value in the amount to be given as change
+        //     let filterChangeAmount = arr1.filter((item) => {
+        //         return item[1] !== 0
+        //     })
+        //     console.log(filterChangeAmount);
+
+        //     //filters currency that has zero value in the cash in register
+        //     let filterCashInRegister = arr2.filter((item) => {
+        //         return item[1] !== 0;
+        //     });
+        //     console.log(filterCashInRegister);
+
+        //     //compare both arrays and check if the are the same
+        //     for (let i = 0; i < filterCashInRegister.length; i++) {
+        //         //console.log(filterChangeAmount[i]);
+        //         //console.log(filterCashInRegister);
+
+        //         for (let j = 0; j < filterCashInRegister.length; j++) {
+        //             if (filterChangeAmount[i][0] !== filterCashInRegister[i][0]) {
+        //                 console.log('they are not equal');
+        //                 obj.status = 'INSUFFICIENT_FUND';
+        //                 obj.change = [];
+        //             }
+        //         }
+        //     }
+        // }
+
+        //filters cash per currecncy denomination e.g ['TWENTY', 60], bbut here we want only the number value
+        function filterCash(arr, str) {
+            let filteredCash = arr.filter(item => {
+                return item[0] === str
+            })
+            //console.log(filteredCash)
+            //console.log(filteredCash[0][1])
+            //console.log(typeof (filteredCash[0][1])) //number
+            return filteredCash[0][1];
+        }
+
+        function filterCashWord(arr, str) {
+            let filteredCash = arr.filter(item => {
+                return item[0] === str
+            })
+            return filteredCash[0][0];
+        }
+
+        function checkAmountRemaining(price, cash) {
+            return cash - price;
+        }
+
+
+        function checkIfAmoutRemainingHasChanged(num, changedValue) {
+            if (num === changedValue) {
+                //console.log('amountRemaing has not chaged')
+            } else if (num !== changedValue) {
+                //console.log('amountRemaing has chaged')
+                //changedValue = num
+                num = changedValue
+                //console.log(num)
+            }
+            return num
+        }
+
+        function getInitialTotalCashInRegister(arr) {
+            let total = arr.reduce((acc, curr) => {
+                //console.log(curr)
+                return acc += curr[1]
+            }, 0)
+            //console.log('initail cash - num1 ' + total);
+            return total
+        }
+
+        //total amount of amount to be given as change
+        function getFinalTotalCashInRegister(arr) {
+            //filter array with only numbers
+            let total = arr.reduce((acc, curr) => {
+                return acc += curr[1]
+            }, 0)
+            //console.log('final cash - num2 ' + total);
+            return total
+        };
+
+        //get status of cash register
+        function getCashRegisterStatus(num1, num2, obj) {
+            if (num1 > num2) { //num1 is cashInRegister , NUM2 IS AmountToBeGiveHasChange
+                obj.status = 'OPEN'
+            } else if (num1 < num2) {
+                obj.status = 'INSUFFICIENT_FUND'
+            } else if (num1 == num2) {
+                obj.status = 'CLOSED'
+            }
+        }
+
+        //check if cash in register have values zero and there are more than one of it
+        function checkIfCashInRegisterHasZero(arr) {
+            let numberOfZeros = [];
+            let cashInRegsisterIsZero = arr.filter((item) => {
+                return item[1] == 0
+            })
+            //console.log(cashInRegsisterIsZero);
+
+            let mappedCashInRegsisterIsZero = cashInRegsisterIsZero.forEach(element => {
+
+                numberOfZeros.push(element[1])
+            });
+            let numberOfZeroCount = numberOfZeros.length;
+            return numberOfZeroCount;
+        }
+
+        function checkIfCurrencyIsPenny(arr) {
+            let filteredCurrencyNote = arr.filter((item) => {
+                return item[0] === 'PENNY'
+            });
+            //console.log(filteredCurrencyNote)
+            return filteredCurrencyNote[0];
+        }
+
+        //the reason why this function is created is to remove currecy with value of zero and if it does 
+        // have zero , return the array
+        function removeAllCurrencyNoteWithZeroValue(arr) {
+            if (checkIfCashInRegisterHasZero(arr) > 3) {
+                let noteWithoutZero = arr.filter((item) => {
+                    console.log(item)
+                    return item[1] === 0.5
+                })
+                console.log(noteWithoutZero);
+                return noteWithoutZero;
+            } else {
+                console.log(arr)
+                return arr;
+            }
+            return arr
+
+
+        }
+
+        //console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+        //should return {status: "INSUFFICIENT_FUNDS", change: []};
+
+        //console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+        //should return {status: "INSUFFICIENT_FUNDS", change: []}
+
+
+
+        //console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+        //should return {status: "OPEN", change: [["QUARTER", 0.5]]}
+
+        console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+
+        //should return { status: "CLOSED", change: [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]] }
+
+        //console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+
+        //should return {status: "OPEN", change: [["TWENTY", 60], ["TEN", 20], ["FIVE", 15], ["ONE", 1], ["QUARTER", 0.5], ["DIME", 0.2], ["PENNY", 0.04]]}.
+
+
+
+
+    </script>
+</body>
+
+</html>

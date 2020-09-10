@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+:root{
+    
+    --mainDark: #242325;
+    --mainWhite: #fff;
+    --mainLightGrey: #f5f5f5;
+    --mainEerieBlack:#151515;
+    --mainBlue:#6494AA;
+    
+}
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.navbar{
+    /* background: var(--mainDark)!important; */
+    background: var(--mainEerieBlack)!important;
+    height: 3.5rem;
+    width: 25%;
+}
+/* .nav-title{
+    margin-top: 50px;
+} */
+/* .top-title{
+    margin-top: 6rem;
+} */
+p{
+    font-size: 0.9rem;
+}
+.shade{
+    background: var(--mainLightGrey);
+    height: 70px;
+    width: 100%;
+}
+.code{
+    font-size: 0.8rem;
+}
+.left-side{
+    background: var(--mainBlue);
+    width: 50;
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+#footer{
+    background: var(--mainBlue);
+    color: var(--mainWhite);
+}
+
+
+}
