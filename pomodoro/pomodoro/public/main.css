@@ -1,0 +1,57 @@
+:root{
+    --mainDarkMagenta:#802392;
+    --mainLightMagenta:#995FA3;
+    --mainCoolGrey:#9A98B5;
+    --mainPewterBlue:#A0B9C6;
+    --mainMagicmint:#A5F8D3;
+    --mainWhite: #fff;
+    --mainDark:#242325;
+}
+
+.btn-icon{
+    font-size: 2rem;
+    color: var(--mainDark);
+}
+.incre-decre-div{
+    position: relative;
+}
+.btn-icon-decrement{
+   position: absolute;
+   right: 45%;
+}
+.btn-icon-increment{
+    position: absolute;
+    right: 30%;
+ }
+ .session-timer{
+     position: relative;
+     border: 1px solid blue;
+     height: 40%;
+     width: 50%;
+     border-radius: 15px;
+ }
+ .session-number{
+     position: absolute;
+     right: 34%;
+ }
+
+ /* .session-timer-num{
+    margin-top: 8rem;
+    height: 40%;
+    width: 50%;
+    border-radius: 50%;
+ } */
+  .session-timer-num{
+    margin-top: 8rem;
+    /* height: 40%;
+    width: 50%;
+    border-radius: 50%; */
+ }
+ 
+ .session-timer-1{
+     position: absolute;
+     right: 50%;
+ }
+ .btn-icon-play{
+
+ }

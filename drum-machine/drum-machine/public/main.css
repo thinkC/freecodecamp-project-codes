@@ -1,0 +1,46 @@
+:root{
+    --mainCharcoal: #264653;
+    --mainPersianGreen:#2A9D8F;
+    --mainOrangeYellow:#E9C46A;
+    --mainSandyBrown:#F4A261;
+    --mainBurntSiena:#E76F51;
+    --mainWhite: #fff;
+    --mainDark:#242325;
+}
+body{
+    background-color: var(--mainCharcoal);
+}
+.title{
+    color: var(--mainWhite);
+}
+.box{
+    width: 80%;
+    height: 250px;
+    background-color: var(--mainPersianGreen);
+    margin-top: 15%;
+    border: var(--mainOrangeYellow) solid 4px;
+}
+.btn-key{
+    width : 6rem;
+    border: 1px solid #cccccc;
+    padding: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 3.5rem;
+    background-color: var(--mainSandyBrown);
+    
+}
+#btn-container{
+    margin-top: 2rem;
+}
+.btn-power{
+    margin-top: 4rem;
+}
+.btn-text{
+    width: 6rem;
+    height: 2rem;
+    background-color:var(--mainBurntSiena) ;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
