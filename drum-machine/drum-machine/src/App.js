@@ -13,7 +13,8 @@ export default class App extends Component {
       return
     }
     if (id === 'Q' || e.keyCode === 81) {
-      console.log('played')
+      console.log('played');
+
       document.getElementById('Q').play()
       //console.log(document.getElementById('W'))
       this.setState({
@@ -96,15 +97,50 @@ export default class App extends Component {
   }
 
   volumeControlHalf = () => {
-    let ab = document.getElementsByTagName('audio')[0];
-    console.log(ab)
-    ab.volume = 0
+    const q = document.getElementById('Q');
+    const w = document.getElementById('W');
+    const e = document.getElementById('E');
+    const a = document.getElementById('A');
+    const s = document.getElementById('S');
+    const d = document.getElementById('D');
+    const z = document.getElementById('Z');
+    const x = document.getElementById('X');
+    const c = document.getElementById('C');
+
+    q.volume = 0.2;
+    w.volume = 0.2;
+    e.volume = 0.2;
+    a.volume = 0.2;
+    s.volume = 0.2;
+    d.volume = 0.2;
+    z.volume = 0.2;
+    x.volume = 0.2;
+    c.volume = 0.2;
+
   }
   volumeControlFull = () => {
-    let ab = document.getElementsByTagName('audio')[0];
-    console.log(ab)
-    ab.volume = 0.2
+    const q = document.getElementById('Q');
+    const w = document.getElementById('W');
+    const e = document.getElementById('E');
+    const a = document.getElementById('A');
+    const s = document.getElementById('S');
+    const d = document.getElementById('D');
+    const z = document.getElementById('Z');
+    const x = document.getElementById('X');
+    const c = document.getElementById('C');
+
+    q.volume = 1.0;
+    w.volume = 1.0;
+    e.volume = 1.0;
+    a.volume = 1.0;
+    s.volume = 1.0;
+    d.volume = 1.0;
+    z.volume = 1.0;
+    x.volume = 1.0;
+    c.volume = 1.0;
   }
+
+
   render() {
     console.log(this.state.powerBtn)
     return (
@@ -116,6 +152,7 @@ export default class App extends Component {
           togglePowerBtn={this.togglePowerBtn}
           volumeControlHalf={this.volumeControlHalf}
           volumeControlFull={this.volumeControlFull}
+          volumeControl={this.volumeControl}
         />
       </div>
     )
