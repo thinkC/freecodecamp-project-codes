@@ -144,7 +144,7 @@ export default class App extends Component {
   render() {
     console.log(this.state.powerBtn)
     return (
-      <div className="container">
+      <div className="container" id="drum-machine">
         <h1 className="title text-center mt-5">Drum Machine</h1>
         <DrumItems
           playDrum={this.playDrum}

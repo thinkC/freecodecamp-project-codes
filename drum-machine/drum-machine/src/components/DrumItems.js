@@ -6,7 +6,7 @@ export default function DrumItems(props) {
 
     return (
 
-        <div className="container">
+        <div className="container"  >
             <div className="col-10 col-md-6 mx-auto box">
                 <div className="row">
                     <div className="col-md-8">
@@ -22,7 +22,7 @@ export default function DrumItems(props) {
                             <div className="col md-4">
                                 <button data-key="65" onKeyDown={(e) => { playDrum('A', e) }} onClick={(e) => { playDrum('A', e) }} className="btn btn-key drum-pad text-white">A <audio id="A" className="clip" src="sound/hihat.wav"></audio></button>
                                 <button data-key="83" onKeyDown={(e) => { playDrum('S', e) }} onClick={(e) => { playDrum('S', e) }} className="btn btn-key drum-pad text-white">S <audio id="S" className="clip" src="sound/kick.wav"></audio></button>
-                                <button data-key="87" onKeyDown={(e) => { playDrum('W', e) }} onClick={(e) => { playDrum('W', e) }} className="btn btn-key drum-pad text-white">D <audio id="D" className="clip" src="sound/openhat.wav"></audio></button>
+                                <button data-key="68" onKeyDown={(e) => { playDrum('D', e) }} onClick={(e) => { playDrum('D', e) }} className="btn btn-key drum-pad text-white">D <audio id="D" className="clip" src="sound/openhat.wav"></audio></button>
                             </div>
                         </div>
                         <div className="row">
@@ -48,7 +48,7 @@ export default function DrumItems(props) {
                         </div>
                         <div className="row">
                             <div className="btn-text">
-                                <h4 className="text-center pt-2">
+                                <h4 className="text-center pt-2" id="display">
                                     {text}
                                 </h4>
                             </div>
